@@ -68,7 +68,8 @@ class AssessmentController extends Controller
      */
     public function show(string $id)
     {
-        return view('assessment.show', compact('id'));
+        $assessment = Assessment::with('program')->find($id);
+        return view('assessment.show', compact('id', 'assessment'));
     }
 
     /**
