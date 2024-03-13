@@ -23,6 +23,7 @@ class AdminSeeder extends Seeder
         ]);
         $user->assignRole($roleSuperAdmin);
 
+//
 //        $user = User::factory()->create([
 //            'name' => 'User1',
 //            'email' => 'user1@user.com',

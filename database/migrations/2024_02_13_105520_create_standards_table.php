@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('standards', function (Blueprint $table) {
             $table->id(); // Primary Key
-            $table->integer('criterion_id');
+            $table->integer('criterion_id')->nullable();
             $table->integer('code');
             $table->text('content');
             $table->integer('point');

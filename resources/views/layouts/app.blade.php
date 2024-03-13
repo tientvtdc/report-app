@@ -5,8 +5,12 @@
     @vite('resources/js/app.js')
     <title>@yield('title') | FIT - TDC </title>
 </head>
-<body>
+<body class="tw-bg-blue-50">
 
-    @yield('content');
+@yield('content')
+@yield('script')
+
+<input type="hidden" id="successMessage" value="{{ session('success') }}">
+
 </body>
 </html>

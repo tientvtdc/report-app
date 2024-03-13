@@ -10,7 +10,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 class Assessment extends Model
 {
     use HasFactory;
-    use LogsActivity;
+//    use LogsActivity;
 
     public function program()
     {
@@ -21,10 +21,16 @@ class Assessment extends Model
     {
         return $this->belongsToMany(Criterion::class, 'assessment_criteria', 'assessment_id', 'criterion_id');
     }
-
-    public function getActivitylogOptions(): LogOptions
+    public function assessmentCriterionStandards()
     {
-        return LogOptions::defaults()
-            ->setDescriptionForEvent(fn(string $eventName) => "Assessment {$eventName}");
+        return $this->hasManyThrough(
+            AssessmentCriterionStandard::class,
+            AssessmentCriterion::class
+        );
     }
+//    public function getActivitylogOptions(): LogOptions
+//    {
+//        return LogOptions::defaults()
+//            ->setDescriptionForEvent(fn(string $eventName) => "Assessment {$eventName}");
+//    }
 }

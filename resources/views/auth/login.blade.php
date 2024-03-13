@@ -35,7 +35,7 @@
     </div>
 
 
-    @yield('script');
+    @yield('script')
 @endsection
 
 

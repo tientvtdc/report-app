@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             AdminSeeder::class,
+            CriteriaTableSeeder::class,
+            ProgramTableSeeder::class
             // Các Seeder khác nếu có
         ]);
 

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->unsignedBigInteger('program_id');
             $table->text('content');
             $table->timestamps();
-            $table->foreign('program_id')->references('id')->on('programs');
         });
 
     }

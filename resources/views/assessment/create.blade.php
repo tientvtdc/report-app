@@ -3,8 +3,9 @@
 @section('title', 'Tạo đánh giá')
 
 @section('section')
-    <form  method="post" action="{{ route('assessments.store') }}">
+    <form  method="post" action="{{ route('assessments.store') }}" class="card rounded px-2 py-1">
         @csrf
+        <div class="card-header tw-text-xl mb-3 tw-font-bold">{{ __('Tạo đánh giá') }}</div>
         @isset($error)
             <div class="text-danger tw-italic" role="alert">
                 {{$error}}
@@ -56,7 +57,9 @@
             <div class="text-danger tw-italic">{{ $message }}</div>
             @enderror
         </div>
-        <button type="submit" class="btn btn-primary ">Thêm</button>
+        <div class="form-group tw-mb-6">
+            <button type="submit" class="btn btn-primary ">Thêm</button>
+        </div>
     </form>
 @endsection
 

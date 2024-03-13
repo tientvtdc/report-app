@@ -15,10 +15,10 @@ class CreateAssessmentCriterionTable extends Migration
     {
         Schema::create('assessment_criteria', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('assessment_id');
+            $table->unsignedBigInteger('assessment_id')->nullable();
             $table->unsignedBigInteger('criterion_id');
+            $table->text('content')->nullable();
             $table->timestamps();
-
             $table->foreign('assessment_id')->references('id')->on('assessments')->onDelete('cascade');
             $table->foreign('criterion_id')->references('id')->on('criteria')->onDelete('cascade');
         });
@@ -31,6 +31,11 @@ class CreateAssessmentCriterionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assessment_criterion');
+        Schema::table('assessment_criteria', function (Blueprint $table) {
+            $table->dropForeign(['criterion_id']);
+            $table->dropForeign(['assessment_id']);
+        });
+        Schema::dropIfExists('assessment_criteria');
     }
+
 }
