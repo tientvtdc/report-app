@@ -13,7 +13,7 @@
         <div class="container " style=" font-family: 'Times New Roman', sans-serif;">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <h3 class="tw-font-bold tw-uppercase mt-4">Bảng mã minh chứng <br>
+                    <h3 class="tw-font-bold tw-uppercase">Bảng mã minh chứng <br>
                         Năm {{ $assessment['schoolyear']}}</h3>
 
                 </div>

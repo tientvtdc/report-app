@@ -7,7 +7,7 @@ const exportExcelButton = document.getElementById('btn-download-excel');
 
 btnDownload.addEventListener('click', function () {
     html2pdf().set({
-        margin:       0.5,
+        margin:       0.3,
         pagebreak: {mode: 'avoid-all'},
         jsPDF: {unit: 'in', format: 'a4', orientation: 'landscape'}
     }).from(element).save();

@@ -162,7 +162,9 @@ document.addEventListener("DOMContentLoaded", function () {
                      </div>
                   <input class="form-control form-control-sm tw-w-24" value="${item.code}"
                   type="tel"
-                   name="evidences[${rowIDs.length + 1}][code]" />
+                   name="evidences[${rowIDs.length + 1}][code]"
+                   ${(window.userRole !== "SUPER_ADMIN" && item.added_by !== window.user_id) ? "readonly" : ''}
+                   />
                 </div>
                     `
                     rowIDs.push(item.evidence.id + '');

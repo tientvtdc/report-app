@@ -10,7 +10,6 @@ export default defineConfig({
                 'resources/js/add-evidence.js',
                 'resources/js/download-pdf.js',
                 'resources/js/load-more-activity.js',
-
             ],
             refresh: true,
         }),
