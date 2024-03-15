@@ -49,6 +49,17 @@ Route::group(['middleware' => ['auth', 'can:publish criteria'], 'as' => 'criteri
 Route::group(['middleware' => ['auth'], 'as' => 'assessments.'], function () {
     Route::prefix('assessments')->group(function () {
         Route::controller(\App\Http\Controllers\AssessmentController::class)->group(function () {
+            Route::group(['middleware' => ['can:publish assessments']], function () {
+                Route::get('/{id}/add-criterion', 'addListCriterion')->name('addListCriterion');
+                Route::put('/{id}/add-criterion', 'storeListCriterion')->name('storeListCriterion');
+                Route::post('/create', 'store')->name('store');
+                Route::get('/create', 'create')->name('create');
+                Route::get('/{id}/add-standards', 'addStandards')->name('addStandards');
+                Route::post('/{id}/add-standards', 'saveNewStandards')->name('saveNewStandards');
+                Route::delete('/{assessment}', 'destroy')
+                    ->name('destroy');
+            });
+
             Route::get('/', 'index')->name('index');
             Route::get('/{id}', 'show')->name('show');
 
@@ -64,16 +75,7 @@ Route::group(['middleware' => ['auth'], 'as' => 'assessments.'], function () {
                 ->name('cloneFromAssessment');
 
 
-            Route::group(['middleware' => ['can:publish assessments']], function () {
-                Route::get('/{id}/add-criterion', 'addListCriterion')->name('addListCriterion');
-                Route::put('/{id}/add-criterion', 'storeListCriterion')->name('storeListCriterion');
-                Route::post('/create', 'store')->name('store');
-                Route::get('/create', 'create')->name('create');
-                Route::get('/{id}/add-standards', 'addStandards')->name('addStandards');
-                Route::post('/{id}/add-standards', 'saveNewStandards')->name('saveNewStandards');
-                Route::delete('/{assessment}', 'destroy')
-                    ->name('destroy');
-            });
+
 
         });
     });
